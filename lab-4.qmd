@@ -1,6 +1,9 @@
 ---
 title: "Lab 4 - Potpourri"
 categories: "Lab"
+author: "Prabhjot Singh"
+
+date: "Mar 26, 2026"
 ---
 
 ```{r}
@@ -23,26 +26,26 @@ a.  Add each of strings below to the code chunk provided in your document, rende
 
     -   Chunk label 1:
 
-    ```         
-    #| label: a-label 
-    #| with-a-line-break
+    ```{r}         
+    #|label: a-label 
+    #|with-a-line-break
     ```
 
     -   Chunk label 2:
 
-    ```         
-    #| label: areaaaaaaaaaaaaaaaaaaaaaallllllllllllllllllyyyyylooooooooooooooooooonglabel 
+    ```{r}            
+    #|label: areaaaaaaaaaaaaaaaaaaaaaallllllllllllllllllyyyyylooooooooooooooooooonglabel 
     ```
 
     -   Chunk label 3:
 
-    ```         
-    #| label: label with spaces
+    ```{r}            
+    #|label: label with spaces
     ```
 
     -   Chunk label 4:
 
-    ```         
+    ```{r}            
     #| label: label-with-dashes
     ```
 
@@ -51,6 +54,9 @@ a.  Add each of strings below to the code chunk provided in your document, rende
     :::
 
 b.  Which of the chunk label options above is the best option? Explain your reasoning in 1-2 sentences.
+```
+Chunk label 4 is the best option as it provides descriptive labelling, while keeping the label name as one item.
+```
 
 ## Question 2
 
@@ -65,9 +71,17 @@ ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm)) +
 
 Add the following code chunk options, one at a time, and set each to `false` and then to `true`. After each value, render your document and observe its effect. Ultimately, choose the values that are the most appropriate for this code chunk. Based on the behaviors you observe, describe what each code chunk option does.
 
--   `echo`
--   `warning`
--   `eval`
+
+- `echo`
+    - False: does not repeat the code
+    - True: repeats code
+- `warning`
+    - False: no warning label
+    - True: allows warning label
+- `eval`
+    - False: no graph display
+    - True: graph display
+
 
 ## Question 3
 
@@ -81,17 +95,27 @@ a.  You have the following code chunk again.
     ```
 
     Add `fig-width` and `fig-asp` as code chunk options. Try setting `fig-width` to values between 1 and 10. Try setting `fig-asp` to values between 0.1 and 1. Re-render the document after each value and observe its effect. Ultimately, choose values that make the plot look visually pleasing in the rendered document. Based on the behavior you observe, describe what each chunk option does.
+    
+```
+fig-width: changes the width of the graph ranging between 1-10
+fid-asp: changes the height of the graph ranging between 0.1-1
+```
 
 b.  You have the following code chunk, but look carefully, it's not exactly the same!
 
     ```{r}
     #| eval: false
+    
 
     gplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm)) + 
       geom_point()
     ```
 
     Add `error` as a code chunk option and set it to `false` and then set it to `true`. After each value, render your document and observe its effect. Ultimately, choose the value that allows you to render your document without altering the code. Based on the behavior you observe, describe what this code chunk option does.
+    
+``` 
+setting error to true allowed the document to render even though gplot function is unavailable, setting it to false doesn't allow the document to render
+```
 
 ::: callout-tip
 Reading [the documentation](https://quarto.org/docs/reference/formats/pdf.html#execution) might also be hepful.
@@ -112,8 +136,16 @@ The following chart was [shared](https://twitter.com/GraphCrimes/status/15662640
 ![](images/private-sector.png){fig-align="center"}
 
 a.  What is misleading about this graph?
+``` 
+Percentages add up to 100 but the representation of the information is off, 87% for Energy and 85% for Royal Mail should be acquiring a lot more space in their respective bars.
+```
 b.  Suppose you wanted to recreate this plot, with improvements to avoid its misleading pitfalls from part (a). You would obviously need the data from the survey in order to be able to do that. How many observations would this data have? How many variables (at least) should it have, and what should those variables be?
+```
+Number of observations is given to be 1858 so i will use that and it should have 2 variables; Response and Service
+```
 c.  Load the data for this survey from `data/survation.csv`. Confirm that the data match the percentages from the visualization. That is, calculate the percentages of public sector, private sector, don't know for each of the services and check that they match the percentages from the plot.
+```Data is not provided, hence question cannot be completed
+```
 
 ## Question 5
 
@@ -128,6 +160,10 @@ Create an improved version of the visualization. Your improved visualization:
 -   does not need to have a bolded title or a gray background
 
 How does the improved visualization look different than the original? Does it send a different message at a first glance?
+
+``` 
+No data provided
+```
 
 ::: callout-tip
 Use `\n` to add a line break to your title. And note that since the title is very long, it might run off the page in your code. That's ok!
@@ -162,6 +198,12 @@ datasaurus_dozen
 ## Question 6
 
 In a single pipeline, calculate the mean of `x`, mean of `y`, standard deviation of `x`, standard deviation of `y`, and the correlation between `x` and `y` for each level of the `dataset` variable. Then, in 1-2 sentences, comment on how these summary statistics compare across groups (datasets).
+```{r}
+datasaurus_dozen|>group_by(dataset)|>summarise(meanx=mean(x),meany=mean(y),stdx=sd(x),stdy=sd(y),corr=cor(x,y))|>print()
+```
+```
+across datasets values for meanx, meany, stdx and stdy are mostly the same, except for correlation it is same but only until the 2nd decimal place.
+```
 
 ::: callout-tip
 There are 13 groups but `tibble`s only print out 10 rows by default. Add `print(n = 13)` as the last step of your pipeline to display all rows.
@@ -170,6 +212,16 @@ There are 13 groups but `tibble`s only print out 10 rows by default. Add `print(
 ## Question 7
 
 Create a scatterplot of `y` versus `x` and color and facet it by `dataset`. Then, in 1-2 sentences, how these plots compare across groups (datasets). How does your response in this question compare to your response to the previous question and what does this say about using visualizations and summary statistics when getting to know a dataset?
+
+```{r}
+ggplot(datasaurus_dozen, aes(x,y, colour = dataset))+
+  geom_point(show.legend = FALSE)+
+  facet_wrap(~dataset)+labs(title="Scatterplot of Y vs X",subtitle="faceted by Dataset")
+  
+```
+```
+By only reading the summary statistics one can think that the data is very similar but when looking at the graphs it is clear how variable the data is, meaning we need both summary statistics and visual representation of the data to derive any conclusions
+```
 
 ::: callout-tip
 When you both color and facet by the same variable, you'll end up with a redundant legend. Turn off the legend by adding `show.legend = FALSE` to the geom creating the legend.
