@@ -2,7 +2,7 @@
 title: "Lab 4 - Potpourri"
 categories: "Lab"
 author: "Prabhjot Singh"
-format: pdf
+
 date: "Mar 26, 2026"
 ---
 
@@ -104,8 +104,8 @@ fid-asp: changes the height of the graph ranging between 0.1-1
 b.  You have the following code chunk, but look carefully, it's not exactly the same!
 
     ```{r}
-    #| eval: true
-    #| error:true
+    #| eval: false
+    
 
     gplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm)) + 
       geom_point()
