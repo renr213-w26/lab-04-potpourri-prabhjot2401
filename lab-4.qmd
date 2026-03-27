@@ -1,6 +1,9 @@
 ---
 title: "Lab 4 - Potpourri"
 categories: "Lab"
+author: "Prabhjot Singh"
+format: pdf
+date: "Mar 26, 2026"
 ---
 
 ```{r}
@@ -23,26 +26,26 @@ a.  Add each of strings below to the code chunk provided in your document, rende
 
     -   Chunk label 1:
 
-    ```         
-    #| label: a-label 
-    #| with-a-line-break
+    ```{r}         
+    #|label: a-label 
+    #|with-a-line-break
     ```
 
     -   Chunk label 2:
 
-    ```         
-    #| label: areaaaaaaaaaaaaaaaaaaaaaallllllllllllllllllyyyyylooooooooooooooooooonglabel 
+    ```{r}            
+    #|label: areaaaaaaaaaaaaaaaaaaaaaallllllllllllllllllyyyyylooooooooooooooooooonglabel 
     ```
 
     -   Chunk label 3:
 
-    ```         
-    #| label: label with spaces
+    ```{r}            
+    #|label: label with spaces
     ```
 
     -   Chunk label 4:
 
-    ```         
+    ```{r}            
     #| label: label-with-dashes
     ```
 
@@ -51,6 +54,9 @@ a.  Add each of strings below to the code chunk provided in your document, rende
     :::
 
 b.  Which of the chunk label options above is the best option? Explain your reasoning in 1-2 sentences.
+```
+Chunk label 4 is the best option as it provides descriptive labelling, while keeping the label name as one item.
+```
 
 ## Question 2
 
@@ -65,9 +71,17 @@ ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm)) +
 
 Add the following code chunk options, one at a time, and set each to `false` and then to `true`. After each value, render your document and observe its effect. Ultimately, choose the values that are the most appropriate for this code chunk. Based on the behaviors you observe, describe what each code chunk option does.
 
--   `echo`
--   `warning`
--   `eval`
+
+- `echo`
+    - False: does not repeat the code
+    - True: repeats code
+-` warning`
+    - False: no warning label
+    - True: allows warning label
+- `eval`
+    - False: no graph display
+    - True: graph display
+
 
 ## Question 3
 
@@ -81,11 +95,17 @@ a.  You have the following code chunk again.
     ```
 
     Add `fig-width` and `fig-asp` as code chunk options. Try setting `fig-width` to values between 1 and 10. Try setting `fig-asp` to values between 0.1 and 1. Re-render the document after each value and observe its effect. Ultimately, choose values that make the plot look visually pleasing in the rendered document. Based on the behavior you observe, describe what each chunk option does.
+    
+```
+fig-width: changes the width of the graph ranging between 1-10
+fid-asp: changes the height of the graph ranging between 0.1-1
+```
 
 b.  You have the following code chunk, but look carefully, it's not exactly the same!
 
     ```{r}
-    #| eval: false
+    #| eval: true
+    #| error:false
 
     gplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm)) + 
       geom_point()
