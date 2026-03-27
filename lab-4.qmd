@@ -75,7 +75,7 @@ Add the following code chunk options, one at a time, and set each to `false` and
 - `echo`
     - False: does not repeat the code
     - True: repeats code
--` warning`
+- `warning`
     - False: no warning label
     - True: allows warning label
 - `eval`
@@ -114,7 +114,7 @@ b.  You have the following code chunk, but look carefully, it's not exactly the 
     Add `error` as a code chunk option and set it to `false` and then set it to `true`. After each value, render your document and observe its effect. Ultimately, choose the value that allows you to render your document without altering the code. Based on the behavior you observe, describe what this code chunk option does.
     
 ``` 
-setting error to true allowed the document to render even though gplot function is unavailable
+setting error to true allowed the document to render even though gplot function is unavailable, setting it to false doesn't allow the document to render
 ```
 
 ::: callout-tip

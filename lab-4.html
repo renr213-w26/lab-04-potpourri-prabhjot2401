@@ -177,7 +177,10 @@ Tip
 <li><code>echo</code>
 <ul>
 <li>False: does not repeat the code</li>
-<li>True: repeats code -<code>warning</code></li>
+<li>True: repeats code</li>
+</ul></li>
+<li><code>warning</code>
+<ul>
 <li>False: no warning label</li>
 <li>True: allows warning label</li>
 </ul></li>
@@ -208,7 +211,7 @@ fid-asp: changes the height of the graph ranging between 0.1-1</code></pre>
 </div>
 <p>Add <code>error</code> as a code chunk option and set it to <code>false</code> and then set it to <code>true</code>. After each value, render your document and observe its effect. Ultimately, choose the value that allows you to render your document without altering the code. Based on the behavior you observe, describe what this code chunk option does.</p></li>
 </ol>
-<pre><code>setting error to true allowed the document to render even though gplot function is unavailable</code></pre>
+<pre><code>setting error to true allowed the document to render even though gplot function is unavailable, setting it to false doesn't allow the document to render</code></pre>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
